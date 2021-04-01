@@ -102,7 +102,7 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 
   // Pepperoni
-  if (state.pepperonni) {
+  if (state.pepperoni) {
     document.querySelector('.btn.btn-pepperoni').classList.add('active');
   } else {
     document.querySelector('.btn.btn-pepperoni').classList.remove('active');
@@ -134,9 +134,60 @@ function renderButtons() {
 
 }
 
+
+
+
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let tot = basePrice; //10$
+  let priceList = document.querySelector('aside.panel.price ul');
+  priceList.innerHTML = " ";
+  console.log(priceList, tot);
+
+  for (let i in ingredients) {
+    if (state[i]) {
+      tot += ingredients[i].price;
+      priceList.innerHTML += `<li>$${ingredients[i].price} ${ingredients[i].name}</li>`;
+    }
+  }
+  console.log(priceList, tot);
+  document.querySelector('aside.panel.price strong').innerHTML = `$ ${tot}`;
 }
+
+//NOT WORKING
+//Pepperoni
+// if (state.pepperoni) {
+//   document.querySelector('.price-pep').style.visibility = 'visible';
+//   totMin += 1;
+// } else {
+//   document.querySelector('.price-pep').style.visibility = 'hidden';
+//   totMin -= 1;
+// }
+// totPrice.innerText(totMin);
+// // mushrooms
+// if (state.mushrooms) {
+//   document.querySelector('.price-mush').style.visibility = 'visible';
+// } else {
+//   document.querySelector('.price-mush').style.visibility = 'hidden';
+// }
+// // green-pep
+// if (state.greenPeppers) {
+//   document.querySelector('.green-pep').style.visibility = 'visible';
+// } else {
+//   document.querySelector('.green-pep').style.visibility = 'hidden';
+// }
+// //white-s
+// if (state.whiteSauce) {
+//   document.querySelector('.white-s').style.visibility = 'visible';
+// } else {
+//   document.querySelector('.white-s').style.visibility = 'hidden';
+// }
+// //gf-crust
+// if (state.glutenFreeCrust) {
+//   document.querySelector('.gf-crust').style.visibility = 'visible';
+// } else {
+//   document.querySelector('.gf-crust').style.visibility = 'hidden';
+// }
 
 renderEverything();
 
